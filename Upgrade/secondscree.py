@@ -4,8 +4,7 @@ import faceR as Trainer
 import scroll as sc
 import sys
 '''
-
-import tkinter as tk
+from attendancepage import *
 global tk
 class popupWindow(object):
     def __init__(self,master):
@@ -37,10 +36,11 @@ def Add(name,batch):
 
 class secondscreen:
     def pop(self):
-        Training(root)
+        Training(self.root)
     def attaendance(self):
-        frame.destroy
-        sc.scroll(root,canvas)
+        self.frame.destroy()
+        Attpage=scroll(self.root,self.canvas)
+        Attpage.start(self)
     def Training(self):
         Trainer.TrainData()
     def back(self):
