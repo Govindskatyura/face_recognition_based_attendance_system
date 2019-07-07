@@ -5,8 +5,7 @@ HEIGHT=600
 WIDTH=450
 global root
 def secscreen():
-    Start.frame.destroy()
-
+    Start.__des__()
     SecPage=secondscreen(canvas,root,Start)
     SecPage.start()
     #Start.start()
@@ -16,7 +15,6 @@ class home:
     
     def __init__(self,root,canvas):
         self.root=root
-        self.canvas=canvas
 
     def start(self):
         self.frame=tk.Frame(canvas,bg='#0f0f0f')
@@ -33,7 +31,12 @@ class home:
         self.Submit = tk.Button(self.frame,text='SUBMIT',bd=0,bg='green',command=secscreen)#call)
         self.Submit.place(rely=0.5,relx=0.2,relheight=0.08,relwidth=0.6)
         self.Submit.flash()
-
+    def __des__(self):
+        self.frame.destroy()
+        self.text.destroy()
+        self.textshow.destroy()
+        self.Address.destroy()
+        self.Submit.destroy()
 
 
 root =tk.Tk()

@@ -1,9 +1,10 @@
-'''import face_D as FaceAdd
-import faceDETECTOR as Video
-import faceR as Trainer
-import scroll as sc
-import sys
 '''
+import scroll as sc
+'''
+import sys
+import Face_Capture as FaceAdd
+import FaceDETECTOR as Video
+import Face_Trainer as Trainer
 from attendancepage import *
 global tk
 class popupWindow(object):
@@ -28,9 +29,10 @@ class popupWindow(object):
         self.value=(self.e.get(),self.e2.get())
         self.top.destroy()
 
-
+#Start Video Camera and quit with Q
 def live():
     Video.liveVideo() 
+
 def Add(name,batch):
     FaceAdd.capture(name,batch)
 
@@ -44,6 +46,7 @@ class secondscreen:
     def Training(self):
         Trainer.TrainData()
     def back(self):
+        self.frame.destroy()
         self.Start.start()
     def popup(self):
         w=popupWindow(self.root)

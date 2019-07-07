@@ -1,7 +1,7 @@
 '''import tkinter as tk
-import dbcon as con
 import second as sc
 '''
+import dbcon as con
 
 import tkinter as tk
 
@@ -13,22 +13,24 @@ class scroll:
         self.scroll_y = tk.Scrollbar(self.root, orient="vertical", command=self.canvas.yview)
 
         self.frame =tk.Frame(self.canvas)
-        #self.frame.place(rely=0.1,relx=0.1,relheight=0.8,relwidth=0.8)
+        #self.frame.place(rely=0.1,relx=0.1,relwidth=0.8)
         def Back():
             self.frame.destroy()
+            self.scroll_y.destroy()
             parent.start()
-            sc.secondscreen(canvas,root)
+            #self.canvas.destroy()
+            #sc.secondscreen(canvas,root)
         # group of widgets
-        #att_List=con.showall()
-        att_List=[[1,"somethhing","enything","enything"],[2,"somethhing","enything","enything"],[3,"somethhing","enything","enything"],[4,"somethhing","enything","enything"]]
-        tk.Label(self.frame, text='Attandence',fg="white",bg="black",font=("Helvetica", 40)).pack() 
+        att_List=con.showall()
+        #att_List=[[1,"somethhing","enything","enything"],[2,"somethhing","enything","enything"],[3,"somethhing","enything","enything"],[4,"somethhing","enything","enything"]]
+        tk.Label(self.frame, text='Attandence',fg="white",bg="black",font=("Helvetica", 40)).pack(fill="both",pady=0) 
+        tk.Button(self.frame, text="Back",fg="white",bg="green",font=40,command=Back).pack(fill="both")
         tk.Label(self.frame).pack()
         for i in range(0,len(att_List)):
             #a=att_List[i][1]
             tk.Label(self.frame, text='name : {} , Batch :{},Time :{}'.format(att_List[i][1],att_List[i][2],att_List[i][3]),fg="white",bg="black",font=40).pack(fill="both")
             tk.Label(self.frame).pack()
-
-        tk.Button(self.frame, text="Back",fg="white",bg="black",font=40,command=Back).pack(fill="both") 
+ 
 
         # put the frame in the canvas
 
@@ -36,8 +38,7 @@ class scroll:
         # make sure everything is displayed before configuring the scrollregion
         self.canvas.update_idletasks()
 
-        self.frame.configure(scrollregion=self.canvas.bbox('all'), 
-                        yscrollcommand=self.scroll_y.set)
+        self.canvas.configure(scrollregion=self.canvas.bbox('all'),yscrollcommand=self.scroll_y.set)
                         
         self.canvas.pack(fill='both', expand=True, side='left')
         self.scroll_y.pack(fill='y', side='right')
