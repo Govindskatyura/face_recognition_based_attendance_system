@@ -5,10 +5,8 @@ import cv2
 face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 def capture(name,batch):
     cap = cv2.VideoCapture(0)
-    conn=connector()
     query=con("INSERT INTO studentinfp (username, class) VALUES ('%s','%s')" % (name,batch))
-    id=con("(SELECT id FROM studentinfp WHERE username='%s' and class='%s'" %(name,batch))
-    conn.__dis__()
+    id=con("SELECT id FROM studentinfp WHERE username='%s' and class='%s'" %(name,batch))
     #print(id)
     sampleN=0
     while 1:

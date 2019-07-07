@@ -48,16 +48,17 @@ class secondscreen:
     def back(self):
         self.frame.destroy()
         self.Start.start()
+    def entryValue(self,w):
+        return w.value
     def popup(self):
         w=popupWindow(self.root)
         self.SecondButton["state"] = "disabled" 
         self.root.wait_window(w.top)
         self.SecondButton["state"] = "normal" 
-        self.datalist=entryValue(w)
-        print(datalist[0],datalist[1])
-        Add(datalist[0],datalist[1])
-    def entryValue(self,w):
-        return w.value
+        self.datalist=self.entryValue(w)
+        print(self.datalist[0],self.datalist[1])
+        Add(self.datalist[0],self.datalist[1])
+    
     
     def __init__(self,canvas,root,Start):
         self.root=root

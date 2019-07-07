@@ -18,9 +18,8 @@ def liveVideo():
             cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)
             id,conf=rec.predict(gray[y:y+h,x:x+w])
             #print(id)
-            conn=connector()
             id=con("SELECT username FROM studentinfp WHERE id=%s" %id)
-            conn.__dis__()
+           
             if id is None:
                 id="Unknown"
             cv2.putText(img,str(id),(x,y+h),font,2.0,(0,0, 255))
