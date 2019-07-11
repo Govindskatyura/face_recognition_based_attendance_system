@@ -11,4 +11,4 @@ pip install opencv
 
 ### Installing
 
-First install all requirements and after that create a database "" with 
+First install all requirements and after that create a database "facedatabase"  .
